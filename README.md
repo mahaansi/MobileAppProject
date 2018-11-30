@@ -27,12 +27,13 @@
      While some other readers are seeking to gain such a book.
      Above all that, knowledage should be resepcted and put in proper place until its fans comes
 # 1.3	PROJECT OBJECTIVE 
-     From this knowledge  project we want to  allow the user to use the system easy to check what the books are available to borrow and help the book owner to share their book to give benefit to whom in need, this app process will have two main process, the first process allows the user to donate with his book by upload the book in the system with short description , another process can check what is the book available if want to borrow. so by this app can protect the book from a throw and encourage the students to search if their requirement book is available to borrow or not.
+     From this knowledge  project we want to  allow the user to use the system easy to check what the books are available to borrow and help the book owner to share their book to give benefit to whom in need, this app process will have two main process, the first process allows the user to donate with his book by upload the book in the system with short description or use the QR code do define the book with it details, another process can check what is the book available if want to borrow. so by this app can protect the book from a throw and encourage the students to search if their requirement book is available to borrow or not.
 # 1.4	PROJECT SCOPE 
 # 1.4.1	Scope 
  The scope of the Book Donation project to :
    -Reuse the Neglected book in use not just put on the shelve.
    -Easy to donate with unused book anymore to give a chance to other to borrow and read.
+   -Use QR code to set the deatials of book
 # 1.4.2	Targeted User
      IIUM community
      
