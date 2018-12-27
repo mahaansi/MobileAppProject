@@ -69,12 +69,13 @@ addNewBook() {
         <TextInput placeholder='BookImage' 
           onChangeText={(BookImage)=>this.setState({BookImage: BookImage})}/>
           
-              <TouchableOpacity style={styles.btn} onPress={()=> {Alert.alert("you clicked me right")}}>
-                <Text style={styles.btnText}> add book</Text>
-              </TouchableOpacity> 
+              
               <TouchableOpacity style={styles.btn} onPress={() => this.props.navigation.navigate('UploadImage')}>
                 <Text style={styles.btnText}> book image</Text>
               </TouchableOpacity>
+                <TouchableOpacity style={styles.btn} onPress={()=> {Alert.alert("you clicked me right")}}>
+                <Text style={styles.btnText}> add book</Text>
+              </TouchableOpacity> 
       </View>
       
     </View>
