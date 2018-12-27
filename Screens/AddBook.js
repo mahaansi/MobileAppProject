@@ -3,16 +3,31 @@ import { TouchableOpacity, Alert, Text, Image, TextInput, Button, View, StyleShe
 
 import { Card, List } from 'react-native-paper';
 import { Constants } from 'expo';
+import firebase from '../firebaseApp';
 
 export default class AddBookScreen extends React.Component {
   state = {
     open: false,
     BookTitle: 'book title is here', 
     Description: 'description is here', 
-    BookImage: 'the image of the book should be here',
     barCode: 'the bar code scanned will be here', 
     Booknumber: 1245463
   };
+
+
+addNewBook() {
+    let data = {
+      title: this.state.BookTitle,
+      description: this.state.Description,
+      barCode: this.state.barCode,
+      number: this.state.Booknumber,
+      image: this.state.BookImage,
+    };
+
+    firebase.database().ref().child('books').push().set(data);
+
+    this.props.navigation.goBack();
+  }
   render() {
     return (
       // <View style={styles.container}>
