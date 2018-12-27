@@ -3,17 +3,35 @@ import { Text, Button, View, StyleSheet } from 'react-native';
 
 import { Card, TextInput } from 'react-native-paper';
 import { Constants } from 'expo';
+import firebase from '../firebaseApp'
 
 export default class LoginScreen extends React.Component {
   constructor() {
     super();
+    if(firebase.auth().currentUser){
+        this.props.navigation.navigate('Home');
+    }
 
     this.state = {
       email: '',
       password: '',
     };
   }
-
+  LogIn = () => {
+    firebase.auth().signInWithEmailAndPassword(
+      this.state.email,
+      this.state.password).then(
+        user => {
+          this.props.navigation.navigate('Home');
+        }
+      ).catch(function(error) {
+        alert(error.message);
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -39,7 +57,7 @@ export default class LoginScreen extends React.Component {
 
           <Button
             title="Login"
-            onPress={() => this.props.navigation.navigate('Home')}
+            onPress={ this.LogIn }
           />
         </Card>
 
