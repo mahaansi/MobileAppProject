@@ -1,75 +1,53 @@
 import * as React from 'react';
-import { Text, Button, View, StyleSheet, Image } from 'react-native';
+import { Text,TextInput, Button, View, StyleSheet } from 'react-native';
 
 import { Card, List } from 'react-native-paper';
-import { Constants , ImagePicker ,  Permissions} from 'expo';
+import { Constants } from 'expo';
 
-export default class UploadImageScreen extends React.Component {
+export default class EditBookScreen extends React.Component {
   state = {
     open: false,
-    image: " ",
   };
 
-  render() {
-    let {image}= this.state;
+  constructor(){
+    super();
+    this.state = {
+      title: '',
+      description: '',
+      bookNo:''
+    };
+  }
 
+  render() {
     return (
       <View style={styles.container}>
-      
-       <Image source={{ uri: image}} style={styles.imgCircle}/>
-        <Text style={styles.paragraph}>Add Book Page</Text>
+        <Text style={styles.paragraph}>Edit Book Details Page</Text>
         <Card>
-        <Button title="Take a picture" 
-      onPress={this.btmCameraClicked}/>
-      <Text></Text>
-      <Button title="Gallery"
-       onPress={this.btmGalleryClicked}/>
-       <Text></Text>
-       
-         <Button
-            title="Using bar code"
-            onPress={() => this.props.navigation.navigate('Barcode')}
-          />
-          <Text></Text>
-          <Text></Text>
-          <Button
-            title="next"
-            onPress={() => this.props.navigation.navigate('Home')}
+        <Text>Title </Text>
+        <TextInput style = {styles.text}
+        onChangeText={(title) => this.setState({title})}
+        underlineColorAndroid = "transparent" placeholder = 'Edit title here'/> 
+
+        <Text>Description </Text>
+        <TextInput style = {{padding:5}}
+        onChangeText={(description) => this.setState({description})}
+        underlineColorAndroid = "transparent" placeholder = 'Edit description here'/> 
+
+        <Text>Book Number </Text>
+        <TextInput style = {{padding:5}}
+        onChangeText={(bookNo) => this.setState({bookNo})}
+        underlineColorAndroid = "transparent" placeholder = 'Edit book number here'/>
+        </Card>
+
+        <Card style ={{marginTop:10}}> 
+        <Button
+            title="Save Changes"
+            onPress={() => this.props.navigation.navigate('ShowBook')}
           />
         </Card>
-        <Text></Text>
-
-      
       </View>
     );
   }
-
-  askPermissionAsync = async ()=>{
-    await Permissions.askAsync (Permissions.CAMERA);
-    await Permissions.askAsync(Permissions.CAMERA_ROLL);
-   };
-
-   btmGalleryClicked= async ()=> {
-    await this.askPermissionAsync();
-    let result = await ImagePicker.launchImageLibraryAsync();
-    if (!result.cancelled){
-      this.setState({ image : result.uri});
-
-    }
-   };
-
-
-   btmCameraClicked= async ()=> {
-    await this.askPermissionAsync();
-    let result = await ImagePicker.launchCameraAsync(
-      {allowsEditing: true,
-       aspect:[4, 3] }
-    );
-    if (!result.cancelled){
-      this.setState({ image : result.uri});
-
-    }
-   };
 }
 
 const styles = StyleSheet.create({
@@ -86,11 +64,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  imgCircle:{
-      width:200,
-      height:200,
-      borderRadius:200/2
-
-  },
+  text: {
+    padding: 5,
+  }
 });
-
