@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Button, View, StyleSheet } from 'react-native';
+import { Text, TextInput, Button, View, StyleSheet } from 'react-native';
 
 import { Card, List } from 'react-native-paper';
 import { Constants } from 'expo';
@@ -12,6 +12,14 @@ export default class ShowBookScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.paragraph}>Book Details Page</Text>
+        
+        <Card style = {{padding:15}}>
+          
+          <Text>Book Title  :          </Text>
+          <Text>Description :          </Text>
+          <Text>Book Number :          </Text>
+        </Card>
+
         <Card>
           <Button
             title="Edit Details"
